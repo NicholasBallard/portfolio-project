@@ -6,6 +6,17 @@ class Blog(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to='images/')
 
+    # this makes the admin site display the title
+    def __str__(self):
+        return self.title
+
+    def summary(self):
+        return self.body[:200]
+    
+    # Don't need this since didn't use datetime
+    # def pub_date_pretty(self):
+    #     return self.pub_date.strftime('%m')
+
 '''
 Create a Blog model
 --title
